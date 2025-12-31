@@ -74,10 +74,28 @@ void vec_free(Vec *vec) {
   free(vec);
 }
 
- Option vec_get(const Vec *vec, size_t idx) {
+Option vec_get(const Vec *vec, size_t idx) {
    if (!vec || idx >= vec->size)
      return option_none();
 
    u32 val = vec->data[idx];
    return option_some(val);
- }
+}
+
+Option vec_pop(Vec *vec, size_t idx) {
+  Option ret = vec_get(vec, idx);
+  if (ret.type == OPTION_NONE)
+    return ret;
+
+  for (size_t i = 1; idx + i < vec->size; i++) {
+    vec->data[idx+i-1] = vec->data[idx+i];
+  }
+
+  vec->size--;
+
+  return option_some(ret.val);
+}
+
+Option vec_pop_last(Vec *vec) {
+  return vec_pop(vec, vec->size-1);
+}

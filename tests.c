@@ -24,6 +24,12 @@ int main() {
 
   assert(vec_get(vec, 8).type == OPTION_NONE);
 
+  assert(vec_pop(vec, 0).type == OPTION_SOME);
+  assert(vec_pop_last(vec).type == OPTION_SOME);
+  assert(vec_pop(vec, 2).type == OPTION_SOME);
+  assert(vec->size == 5);
+  assert(vec_pop(vec, 6).type == OPTION_NONE);
+
   vec_free(vec);
   printf("Tests done :)\n");
   return 0;
