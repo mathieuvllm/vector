@@ -1,0 +1,28 @@
+#include <assert.h>
+#include <stdio.h>
+#include "vec.h"
+
+int main() {
+  Vec *vec;
+  assert(new_vec(&vec) == VEC_OK);
+  assert(vec->size == 0);
+  assert(vec->capacity == 8);
+
+  assert(vec_set(vec, 0, 1) == VEC_INDEX_OUT_OF_BOUNDS);
+
+  assert(vec_push(vec, 1) == VEC_OK);
+  assert(vec->size == 1);
+  assert(vec_get(vec, 0).val == 1);
+
+  for (size_t i = 1; i < vec->capacity; i++) {
+    assert(vec_push(vec, 2) == VEC_OK);
+  }
+
+  assert(vec_push(vec, 0) == VEC_OK);
+  assert(vec->capacity == 16);
+  assert(vec->size = 8);
+
+  vec_free(vec);
+  printf("Tests done :)\n");
+  return 0;
+}
