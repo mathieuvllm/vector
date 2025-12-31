@@ -22,6 +22,8 @@ int main() {
   assert(vec->capacity == 16);
   assert(vec->size = 8);
 
+  assert(vec_get(vec, 8).type == OPTION_NONE);
+
   vec_free(vec);
   printf("Tests done :)\n");
   return 0;
