@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef uint32_t u32;
 
@@ -66,3 +67,7 @@ Option vec_pop_last(Vec *vec);
 void vec_free(Vec *vec);
 
 Option vec_get(const Vec *vec, size_t idx);
+
+void vec_print(const Vec *vec);
+
+void vec_print_debug(const Vec *vec);

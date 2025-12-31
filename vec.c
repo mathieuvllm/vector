@@ -99,3 +99,32 @@ Option vec_pop(Vec *vec, size_t idx) {
 Option vec_pop_last(Vec *vec) {
   return vec_pop(vec, vec->size-1);
 }
+
+void vec_print(const Vec *vec) {
+  if (!vec || !(vec->data))
+    return;
+  
+  printf("[");
+  for (size_t idx = 0; idx < vec->size; idx++) {
+    printf("%d", vec->data[idx]);
+    if (idx != vec->size-1)
+      printf(", ");
+  }
+  printf("]\n");
+}
+
+void vec_print_debug(const Vec *vec) {
+  if (!vec) {
+    printf("Invalid ptr\n");
+    return;
+  }
+
+  if (!(vec->data)) {
+    printf("Data ptr invalid\n");
+    return;
+  }
+
+  printf("Capacity: %ld\n", vec->capacity);
+  printf("Size: %ld\n", vec->size);
+  vec_print(vec);
+}

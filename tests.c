@@ -18,6 +18,8 @@ int main() {
     assert(vec_push(vec, 2) == VEC_OK);
   }
 
+  vec_print_debug(vec);
+
   assert(vec_push(vec, 0) == VEC_OK);
   assert(vec->capacity == 16);
   assert(vec->size = 8);
@@ -29,6 +31,8 @@ int main() {
   assert(vec_pop(vec, 2).type == OPTION_SOME);
   assert(vec->size == 5);
   assert(vec_pop(vec, 6).type == OPTION_NONE);
+
+  vec_print_debug(vec);
 
   vec_free(vec);
   printf("Tests done :)\n");
