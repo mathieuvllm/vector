@@ -44,6 +44,20 @@ int main() {
   assert(vec_shrink(&vec) == VEC_EMPTY);
 
   vec_free(&vec);
+
+  Vec vec2;
+  assert(new_vec_capacity(&vec2, 128) == VEC_OK);
+  for (u32 i = 0; i < 9; i++) {
+    assert(vec_push(&vec2, 0) == VEC_OK);
+  }
+
+  vec_print_debug(vec2);
+
+  vec_pop_last(&vec2);
+  assert(vec2.capacity == vec2.size);
+  vec_print_debug(vec2);
+
+  vec_free(&vec2);
   printf("Tests done :)\n");
   return 0;
 }

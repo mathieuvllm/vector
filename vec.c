@@ -88,6 +88,9 @@ Option vec_pop(Vec *vec, size_t idx) {
 
   vec->size--;
 
+  if (vec->capacity >= 4*vec->size)
+    vec_shrink(vec);
+
   return option_some(ret.val);
 }
 
