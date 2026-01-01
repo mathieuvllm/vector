@@ -51,11 +51,11 @@ typedef enum {
 } vec_result;
 
 
-vec_result new_vec_capacity(Vec **vec, size_t capacity);
+vec_result new_vec_capacity(Vec *vec, size_t capacity);
 
-vec_result new_vec(Vec **vec);
+vec_result new_vec(Vec *vec);
 
-vec_result vec_resize(Vec **vec);
+vec_result vec_resize(Vec *vec);
 
 vec_result vec_set(Vec *vec, size_t idx, u32 val);
 
@@ -67,12 +67,12 @@ Option vec_pop_last(Vec *vec);
 
 void vec_free(Vec *vec);
 
-Option vec_get(const Vec *vec, size_t idx);
+Option vec_get(Vec vec, size_t idx);
 
-void vec_print(const Vec *vec);
+void vec_print(Vec vec);
 
-void vec_print_debug(const Vec *vec);
+void vec_print_debug(Vec vec);
 
 vec_result vec_empty(Vec *vec);
 
-vec_result vec_shrink(Vec **vec);
+vec_result vec_shrink(Vec *vec);
