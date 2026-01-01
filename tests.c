@@ -34,6 +34,13 @@ int main() {
 
   vec_print_debug(vec);
 
+  assert(vec_shrink(&vec) == VEC_OK);
+  assert(vec->capacity == vec->size);
+  vec_print_debug(vec);
+
+  assert(vec_empty(vec) == VEC_OK);
+  assert(vec->size == 0);
+
   vec_free(vec);
   printf("Tests done :)\n");
   return 0;
