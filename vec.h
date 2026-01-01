@@ -46,7 +46,8 @@ typedef enum {
   VEC_OK,
   VEC_ALLOC_ERR,
   VEC_INDEX_OUT_OF_BOUNDS,
-  VEC_INVALID_PTR
+  VEC_INVALID_PTR,
+  VEC_EMPTY
 } vec_result;
 
 
@@ -71,3 +72,7 @@ Option vec_get(const Vec *vec, size_t idx);
 void vec_print(const Vec *vec);
 
 void vec_print_debug(const Vec *vec);
+
+vec_result vec_empty(Vec *vec);
+
+vec_result vec_shrink(Vec **vec);

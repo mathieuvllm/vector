@@ -128,3 +128,29 @@ void vec_print_debug(const Vec *vec) {
   printf("Size: %ld\n", vec->size);
   vec_print(vec);
 }
+
+vec_result vec_shrink(Vec **vec) {
+  if (!(*vec))
+    return VEC_INVALID_PTR;
+
+  if ((*vec)->size == 0)
+    return VEC_EMPTY;
+
+  size_t new_capacity = (*vec)->size;
+
+  u32 *tmp = (u32 *)realloc((*vec)->data, new_capacity * sizeof(u32));
+  if (!tmp)
+    return VEC_ALLOC_ERR;
+
+  (*vec)->capacity = new_capacity;
+  (*vec)->data = tmp;
+
+  return VEC_OK;
+}
+
+vec_result vec_empty(Vec *vec) {
+  if (!vec)
+    return VEC_INVALID_PTR;
+  vec->size = 0;
+  return VEC_OK;
+}
