@@ -147,3 +147,25 @@ vec_result vec_empty(Vec *vec) {
   vec->size = 0;
   return VEC_OK;
 }
+
+vec_result vec_insert(Vec *vec, size_t idx, u32 val) {
+  if (!vec)
+    return VEC_INVALID_PTR;
+
+  if (idx > vec->size)
+    return VEC_INDEX_OUT_OF_BOUNDS;
+
+  if (idx == vec->size)
+    return vec_push(vec, val);
+
+  u32 old;
+  u32 new = val;
+
+  for (size_t i = idx; i < vec->size-1; i++) {
+    old = vec_get(*vec, i).val;
+    vec_set(vec, i, new);
+    new = old;
+  }
+
+  return vec_push(vec, new);
+}

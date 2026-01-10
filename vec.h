@@ -76,3 +76,5 @@ void vec_print_debug(Vec vec);
 vec_result vec_empty(Vec *vec);
 
 vec_result vec_shrink(Vec *vec);
+
+vec_result vec_insert(Vec *vec, size_t idx, u32 val);
