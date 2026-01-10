@@ -57,6 +57,13 @@ int main() {
   assert(vec2.capacity == vec2.size);
   vec_print_debug(vec2);
 
+  assert(vec_insert(&vec2, 0, 1) == VEC_OK);
+  assert(vec_get(vec2, 0).val == 1);
+  assert(vec_insert(&vec2, 6, 2) == VEC_OK);
+  assert(vec_get(vec2, 6).val == 2);
+
+  vec_print_debug(vec2);
+
   vec_free(&vec2);
   printf("Tests done :)\n");
   return 0;
